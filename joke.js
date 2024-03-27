@@ -29,51 +29,104 @@ const jokes = {
   ],
 };
 
-const input = process.argv.slice(2)[0].toLowerCase();
-const jokeInput = process.argv.slice(2)[1];
+function getJoke() {
+  let category = rl.question("\nChoose a category: ").toLowerCase();
 
-function getRandomJoke() {
+  while (!Object.hasOwn(jokes, category)) {
+    category = rl
+      .question("\nNo matching category found, please try again: ")
+      .toLowerCase();
+  }
   for (const element in jokes) {
-    if (element === input) {
-      const randNum = Math.floor(Math.random() * jokes[input].length);
-      return jokes[input][randNum];
+    if (element === category) {
+      const randNum = Math.floor(Math.random() * jokes[category].length);
+      return `\n > ${jokes[category][randNum]} <`;
     }
   }
-  return "Argument not accepted";
 }
 
 // Version 1
 
 function addJoke() {
-  for (const cat in jokes) {
-    if (cat === input) {
-      jokes[input].push(jokeInput);
-      return `Joke added ! 
+  let category = rl
+    .question("\nChoose a category to add the joke in: ")
+    .toLowerCase();
 
-${jokes[input]}`;
+  while (!Object.hasOwn(jokes, category)) {
+    category = rl
+      .question("\nNo matching category found, please try again: ")
+      .toLowerCase();
+  }
+
+  let joke = rl.question("\nTell me your joke: ");
+
+  for (const cat in jokes) {
+    if (cat === category) {
+      jokes[category].push(joke);
+      return "\nJoke added !";
     }
   }
-  return "Joke couldn't be added...";
 }
 
-    
-// Version 2
-    
-// function addJoke(){
-//   const input = process.argv[2];
-//   const newInput = process.argv.slice(3).join(' ');
-//   if(jokes[input]){
-//   jokes[input].push(newInput);
-//   console.log('Joke added');
-//   return jokes[input]
-//   }
-//   else{
-//     return 'Category not found';
-//   }
-// }
+// Developer function
+function showArray(category) {
+  console.log(`
+Jokes in ${category} :
+=================
+`);
+  let counter = 1;
+  for (const element of jokes[category]) {
+    console.log(`${counter}. ${element}`);
+    counter++;
+  }
+}
 
+const rl = require("readline-sync");
 
-process.argv.slice(2).length > 1
-  ? console.log(addJoke())
-  : console.log(getRandomJoke());
+let end = false;
+while (!end) {
+  // Ask for task
+  let key = rl.question("\nGet or Add a joke ? [g/a]: ").toLowerCase();
 
+  while (key !== "g" && key !== "a" && key !== ".") {
+    key = rl.question("\nPlease choose add [a] or get [g]: ").toLowerCase();
+  }
+
+  if (key === ".") console.log("\n>>> Developer mode ! <<<");
+  // Show available categories
+  console.log("\nAvailable categories: ");
+
+  for (const cat in jokes) {
+    console.log(`- ${cat}`);
+  }
+
+  // Go into right decision
+
+  // Adding a joke
+  if (key === "a") {
+    console.log(addJoke());
+  }
+
+  // Get a joke
+  if (key === "g") {
+    console.log(getJoke());
+  }
+
+  // Developer menu
+  if (key === ".") {
+    const category = rl.question("\nCategory: ");
+    showArray(category);
+  }
+
+  // Continue ?
+  let choice = rl.question("\nContinue [y/n] ?: ");
+  while (choice !== "y" && choice !== "n") {
+    choice = rl
+      .question("\nPlease type [y] to continue or [n] to exit program: ")
+      .toLowerCase();
+  }
+  if (choice === "n") end = true;
+  if (choice === "y") end = false;
+}
+
+console.log("\nGoodbye !");
