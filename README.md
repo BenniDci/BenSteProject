@@ -4,7 +4,7 @@
 
 ---
 
-**Prerequisite:**
+**Prerequisites:**
 
 - A working PC
 - [Node.js](https://nodejs.org/en/download)
