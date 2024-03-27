@@ -21,12 +21,23 @@ const jokes = {
     "Why did the physicist break up with his girlfriend? Because he found her mass to be attractive, but her charge was always negative!",
   ],
   flat: [
-    "I used to play piano by ear, but now I use my hands.\n",
-    "I told my wife she was drawing her eyebrows too high. She looked surprised.\n",
-    "Why did the scarecrow win an award? Because he was outstanding in his field!\n",
-    "What do you call a fake noodle? An impasta! \n",
-    "Why did the bicycle fall over? Because it was two-tired! \n",
+    "I used to play piano by ear, but now I use my hands.",
+    "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+    "Why did the scarecrow win an award? Because he was outstanding in his field!",
+    "What do you call a fake noodle? An impasta!",
+    "Why did the bicycle fall over? Because it was two-tired!",
   ],
+};
+
+
+
+function getRandomJoke() {
+  const input = process.argv.slice(2)[0].toLowerCase();
+  for (const element in jokes) {
+    if (element === input) {
+      // console.log("Input: " + input);
+      const randNum = Math.floor(Math.random() * jokes[input].length);
+      // console.log("randNum: " + randNum);
 };
 
 const input = process.argv.slice(2)[0].toLowerCase();
@@ -41,6 +52,25 @@ function getRandomJoke() {
   }
   return "Argument not accepted";
 }
+
+// Version 2
+function addJoke(){
+  const input = process.argv[2];
+  const newInput = process.argv.slice(3).join(' ');
+  if(jokes[input]){
+  jokes[input].push(newInput);
+  console.log('Joke added');
+  return jokes[input]
+  }
+  else{
+    return 'Category not found';
+  }
+}
+
+console.log(getRandomJoke());
+console.log(addJoke());
+
+// Version 1
 
 function addJoke() {
   for (const cat in jokes) {
@@ -57,3 +87,4 @@ ${jokes[input]}`;
 process.argv.slice(2).length > 1
   ? console.log(addJoke())
   : console.log(getRandomJoke());
+
