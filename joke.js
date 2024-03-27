@@ -1,15 +1,34 @@
-const jokes = [
+const jokes = {
+  Animals: [
+    "What do you call a dog that does magic tricks? A labracadabrador!",
+    "What do you call a group of cows playing instruments? A moo-sical band.",
+    "What do you call a cow with no legs? Ground beef.",
+    "What do you call a cat that likes to play basketball? A paw-sitive player.",
+    "Why don't elephants use computers? They're afraid of the mouse!",
+  ],
+  Sports: [
+    "Why did the golfer get kicked out of the bar? He was hitting on too many balls!,",
+    "Why was the football stadium so cold? Because there were a lot of fans!",
+    "What's the difference between basketball player and a stripper pole? The stripper pole doesn't get fired from it's job after college girls grind on it.",
+    "What does your favorite football team and the mailman have in common? They never deliver on Sunday. ",
+    "How many Liverpool fans does it take to change a light bulb? None they just sit around talking about how good the old one was.",
+  ],
+  Science: [
     "Why don't scientists trust atoms? Because they make up everything!",
     "How does a computer get drunk? It takes screenshots!",
     "Parallel lines have so much in common. It's a shame they'll never meet.",
+    "Why was the math book sad ? Because it had too many problems!",
+    "Why did the physicist break up with his girlfriend? Because he found her mass to be attractive, but her charge was always negative!",
+  ],
+  Flat: [
     "I used to play piano by ear, but now I use my hands.",
     "I told my wife she was drawing her eyebrows too high. She looked surprised.",
     "Why did the scarecrow win an award? Because he was outstanding in his field!",
-    "What do you call a fish with no eyes? A fsh!",
+    "What do you call a fake noodle? An impasta!",
     "Why did the bicycle fall over? Because it was two-tired!",
-    "What do you call a deer with no eyes? No idea!",
-]; 
+  ],
+};
 
-function generateRandomJoke() {
-    const randomJoke = jokes[Math.floor(Math.random() * jokes.length)]
+function getRandomJoke() {
+  //
 }
