@@ -21,57 +21,102 @@ const jokes = {
     "Why did the physicist break up with his girlfriend? Because he found her mass to be attractive, but her charge was always negative!",
   ],
   flat: [
-    "I used to play piano by ear, but now I use my hands.\n",
-    "I told my wife she was drawing her eyebrows too high. She looked surprised.\n",
-    "Why did the scarecrow win an award? Because he was outstanding in his field!\n",
-    "What do you call a fake noodle? An impasta! \n",
-    "Why did the bicycle fall over? Because it was two-tired! \n",
+    "I used to play piano by ear, but now I use my hands.",
+    "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+    "Why did the scarecrow win an award? Because he was outstanding in his field!",
+    "What do you call a fake noodle? An impasta!",
+    "Why did the bicycle fall over? Because it was two-tired!",
   ],
 };
 
-const rl = require("readline-sync");
+function getRandomJoke() {
+  let category = rl.question("\nChoose a category: ").toLowerCase();
 
-// const input = process.argv.slice(2)[0].toLowerCase();
-// const jokeInput = process.argv.slice(2)[1];
+  while (!Object.hasOwn(jokes, category)) {
+    category = rl
+      .question("\nNo matching category found, please try again: ")
+      .toLowerCase();
+  }
+  for (const element in jokes) {
+    if (element === category) {
+      const randNum = Math.floor(Math.random() * jokes[category].length);
+      return "\n" + jokes[category][randNum];
+    }
+  }
+}
+
+function addJoke() {
+  let category = rl
+    .question("\nChoose a category to add the joke in: ")
+    .toLowerCase();
+
+  while (!Object.hasOwn(jokes, category)) {
+    category = rl
+      .question("\nNo matching category found, please try again: ")
+      .toLowerCase();
+  }
+
+  let joke = rl.question("\nTell me your joke: ");
+
+  for (const cat in jokes) {
+    if (cat === category) {
+      jokes[category].push(joke);
+      return "\nJoke added !";
+    }
+  }
+}
+
+// Developer function
+function showArray(category) {
+  for (const element of jokes[category]) {
+    console.log(element);
+  }
+}
+
+const rl = require("readline-sync");
 
 let end = false;
 while (!end) {
   // Ask for task
-  let key = rl.question("Get or Add a joke ? [g/a]: ").toLowerCase();
-  console.log("key before do: " + key, typeof key);
+  let key = rl.question("\nGet or Add a joke ? [g/a]: ").toLowerCase();
 
-  while (key !== "g" || key !== "a") {
-    key = rl.question("Please choose add [a] or get [g]: ").toLowerCase();
-    console.log("key while do: " + key, typeof key);
+  while (key !== "g" && key !== "a" && key !== ".") {
+    key = rl.question("\nPlease choose add [a] or get [g]: ").toLowerCase();
+  }
+
+  // Show available categories
+  console.log("\nAvailable categories: ");
+
+  for (const cat in jokes) {
+    console.log(`- ${cat}`);
   }
 
   // Go into right decision
-  // if ()
-  console.log("Goodbye");
+
+  // Adding a joke
+  if (key === "a") {
+    console.log(addJoke());
+  }
+
+  // Get a joke
+  if (key === "g") {
+    console.log(getRandomJoke());
+  }
+
+  if (key === ".") {
+    const category = rl.question("Category: ");
+    showArray(category);
+  }
+
+  // Continue ?
+  let choice = rl.question("\nContinue [y/n] ?: ");
+  while (choice !== "y" && choice !== "n") {
+    choice = rl
+      .question("\nPlease type [y] to continue or [n] to exit program: ")
+      .toLowerCase();
+  }
+  if (choice === "n") end = true;
+  if (choice === "y") end = false;
 }
 
-//   function getRandomJoke() {
-//     for (const element in jokes) {
-//       if (element === input) {
-//         const randNum = Math.floor(Math.random() * jokes[input].length);
-//         return jokes[input][randNum];
-//       }
-//     }
-//     return "Argument not accepted";
-//   };
-
-// function addJoke() {
-//   for (const cat in jokes) {
-//     if (cat === input) {
-//       jokes[input].push(jokeInput);
-//       return `Joke added !
-
-// ${jokes[input]}`;
-//     }
-//   }
-//   return "Joke couldn't be added...";
-// }
-
-// process.argv.slice(2).length > 1
-//   ? console.log(addJoke())
-//   : console.log(getRandomJoke());
+console.log("\nGoodbye !");
