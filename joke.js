@@ -29,7 +29,7 @@ const jokes = {
   ],
 };
 
-function getRandomJoke() {
+function getJoke() {
   let category = rl.question("\nChoose a category: ").toLowerCase();
 
   while (!Object.hasOwn(jokes, category)) {
@@ -40,7 +40,7 @@ function getRandomJoke() {
   for (const element in jokes) {
     if (element === category) {
       const randNum = Math.floor(Math.random() * jokes[category].length);
-      return "\n" + jokes[category][randNum];
+      return `\n > ${jokes[category][randNum]} <`;
     }
   }
 }
@@ -68,6 +68,10 @@ function addJoke() {
 
 // Developer function
 function showArray(category) {
+  console.log(`
+Jokes in ${category} :
+=================
+`);
   for (const element of jokes[category]) {
     console.log(element);
   }
@@ -84,6 +88,7 @@ while (!end) {
     key = rl.question("\nPlease choose add [a] or get [g]: ").toLowerCase();
   }
 
+  if (key === ".") console.log("\n>>> Developer mode ! <<<");
   // Show available categories
   console.log("\nAvailable categories: ");
 
@@ -100,11 +105,12 @@ while (!end) {
 
   // Get a joke
   if (key === "g") {
-    console.log(getRandomJoke());
+    console.log(getJoke());
   }
 
+  // Developer menu
   if (key === ".") {
-    const category = rl.question("Category: ");
+    const category = rl.question("\nCategory: ");
     showArray(category);
   }
 
