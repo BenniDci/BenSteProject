@@ -7,10 +7,10 @@ const jokes = {
     "Why don't elephants use computers? They're afraid of the mouse!",
   ],
   sports: [
-    "Why did the golfer get kicked out of the bar? He was hitting on too many balls!,",
+    "Why did the golfer get kicked out of the bar? He was hitting on too many balls!",
     "Why was the football stadium so cold? Because there were a lot of fans!",
     "What's the difference between basketball player and a stripper pole? The stripper pole doesn't get fired from it's job after college girls grind on it.",
-    "What does your favorite football team and the mailman have in common? They never deliver on Sunday. ",
+    "What does your favorite football team and the mailman have in common? They never deliver on Sunday.",
     "How many Liverpool fans does it take to change a light bulb? None they just sit around talking about how good the old one was.",
   ],
   science: [
@@ -38,13 +38,22 @@ function getRandomJoke() {
       // console.log("Input: " + input);
       const randNum = Math.floor(Math.random() * jokes[input].length);
       // console.log("randNum: " + randNum);
+};
+
+const input = process.argv.slice(2)[0].toLowerCase();
+const jokeInput = process.argv.slice(2)[1];
+
+function getRandomJoke() {
+  for (const element in jokes) {
+    if (element === input) {
+      const randNum = Math.floor(Math.random() * jokes[input].length);
       return jokes[input][randNum];
     }
   }
   return "Argument not accepted";
 }
 
-// Version B
+// Version 2
 function addJoke(){
   const input = process.argv[2];
   const newInput = process.argv.slice(3).join(' ');
@@ -61,7 +70,21 @@ function addJoke(){
 console.log(getRandomJoke());
 console.log(addJoke());
 
-// to Do 
+// Version 1
 
-// neuer Joke soll im Array bleiben
+function addJoke() {
+  for (const cat in jokes) {
+    if (cat === input) {
+      jokes[input].push(jokeInput);
+      return `Joke added ! 
+
+${jokes[input]}`;
+    }
+  }
+  return "Joke couldn't be added...";
+}
+
+process.argv.slice(2).length > 1
+  ? console.log(addJoke())
+  : console.log(getRandomJoke());
 
