@@ -29,31 +29,49 @@ const jokes = {
   ],
 };
 
-const input = process.argv.slice(2)[0].toLowerCase();
-const jokeInput = process.argv.slice(2)[1];
+const rl = require("readline-sync");
 
-function getRandomJoke() {
-  for (const element in jokes) {
-    if (element === input) {
-      const randNum = Math.floor(Math.random() * jokes[input].length);
-      return jokes[input][randNum];
-    }
+// const input = process.argv.slice(2)[0].toLowerCase();
+// const jokeInput = process.argv.slice(2)[1];
+
+let end = false;
+while (!end) {
+  // Ask for task
+  let key = rl.question("Get or Add a joke ? [g/a]: ").toLowerCase();
+  console.log("key before do: " + key, typeof key);
+
+  while (key !== "g" || key !== "a") {
+    key = rl.question("Please choose add [a] or get [g]: ").toLowerCase();
+    console.log("key while do: " + key, typeof key);
   }
-  return "Argument not accepted";
+
+  // Go into right decision
+  // if ()
+  console.log("Goodbye");
 }
 
-function addJoke() {
-  for (const cat in jokes) {
-    if (cat === input) {
-      jokes[input].push(jokeInput);
-      return `Joke added ! 
+//   function getRandomJoke() {
+//     for (const element in jokes) {
+//       if (element === input) {
+//         const randNum = Math.floor(Math.random() * jokes[input].length);
+//         return jokes[input][randNum];
+//       }
+//     }
+//     return "Argument not accepted";
+//   };
 
-${jokes[input]}`;
-    }
-  }
-  return "Joke couldn't be added...";
-}
+// function addJoke() {
+//   for (const cat in jokes) {
+//     if (cat === input) {
+//       jokes[input].push(jokeInput);
+//       return `Joke added !
 
-process.argv.slice(2).length > 1
-  ? console.log(addJoke())
-  : console.log(getRandomJoke());
+// ${jokes[input]}`;
+//     }
+//   }
+//   return "Joke couldn't be added...";
+// }
+
+// process.argv.slice(2).length > 1
+//   ? console.log(addJoke())
+//   : console.log(getRandomJoke());
