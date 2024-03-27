@@ -1,4 +1,4 @@
-# Random Joke Writer
+# Random Jokes
 
 **This project give the user a joke out of a list of predefined jokes randomly.**
 
@@ -8,26 +8,17 @@
 
 - A working PC
 - [Node.js](https://nodejs.org/en/download)
+- [readline-sync Package](https://www.npmjs.com/package/readline-sync)
 
-**How to use:**
+## Instructions
 
-to get a joke:
+**Windows:**
 
-1. Open terminal in project folder (Powershell, Cmd, Bash... dosn't matter)
-2. Type `joke.js <parameter>`
-3. Enjoy 😂
+1. Install [Node.js](https://nodejs.org/en/download)
+2. [Download](<(https://github.com/BenniDci/BenSteProject/archive/refs/heads/main.zip)>) Zip
+3. Extract Zip
+4. Open Powershell or Cmd inside folder
+5. Type in `npm install`
+6. Type in `node joke.js`
 
-to add a joke:
-
-1. Open terminal in project folder (Powershell, Cmd, Bash... dosn't matter)
-2. Type `joke.js <parameter> "Funny joke here..."`
-3. Enjoy 😂
-
----
-
-**Parameter list:**
-
-- animals
-- sports
-- science
-- flat
+### ENJOY 😂
