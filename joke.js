@@ -29,17 +29,6 @@ const jokes = {
   ],
 };
 
-
-
-function getRandomJoke() {
-  const input = process.argv.slice(2)[0].toLowerCase();
-  for (const element in jokes) {
-    if (element === input) {
-      // console.log("Input: " + input);
-      const randNum = Math.floor(Math.random() * jokes[input].length);
-      // console.log("randNum: " + randNum);
-};
-
 const input = process.argv.slice(2)[0].toLowerCase();
 const jokeInput = process.argv.slice(2)[1];
 
