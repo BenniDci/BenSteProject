@@ -1,5 +1,26 @@
-- Möglichkeit bieten eigene Jokes zuzufügen 
-- unabhängig von der Container Größe ansprechen mit Spread Syntax 
-- Object anlegen mit Categorien für die jokes 
-- Alle jokes sollen nur einmal durchlaufen und es soll einen end Prompt geben (break continue)
-- möglichst dynamisch alle jokes oder einzelne Kategorien durchlaufen können
+# Random Joke Writer
+
+**This project give the user a joke out of a list of predefined jokes randomly.**
+
+---
+
+**Prerequisite:**
+
+- A working PC
+- [Node.js](https://nodejs.org/en/download)
+
+**How to use:**
+
+1. Open terminal in project folder (Powershell, CMD, Bash... dosn't matter)
+2. Type `joke.js <parameter>`
+3. Enjoy 😂
+
+---
+
+**Parameter list:**
+
+- Animals
+- Cars
+- Sports
+- Science
+- Flat
