@@ -11,7 +11,7 @@
 
 **How to use:**
 
-1. Open terminal in project folder (Powershell, CMD, Bash... dosn't matter)
+1. Open terminal in project folder (Powershell, Cmd, Bash... dosn't matter)
 2. Type `joke.js <parameter>`
 3. Enjoy 😂
 
@@ -19,8 +19,7 @@
 
 **Parameter list:**
 
-- Animals
-- Cars
-- Sports
-- Science
-- Flat
+- animals
+- sports
+- science
+- flat
