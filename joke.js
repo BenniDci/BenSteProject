@@ -67,26 +67,24 @@ ${jokes[input]}`;
   return "Joke couldn't be added...";
 }
 
-process.argv.slice(2).length > 1
-  ? console.log(addJoke())
-  : console.log(getRandomJoke());
     
 // Version 2
     
-function addJoke(){
-  const input = process.argv[2];
-  const newInput = process.argv.slice(3).join(' ');
-  if(jokes[input]){
-  jokes[input].push(newInput);
-  console.log('Joke added');
-  return jokes[input]
-  }
-  else{
-    return 'Category not found';
-  }
-}
+// function addJoke(){
+//   const input = process.argv[2];
+//   const newInput = process.argv.slice(3).join(' ');
+//   if(jokes[input]){
+//   jokes[input].push(newInput);
+//   console.log('Joke added');
+//   return jokes[input]
+//   }
+//   else{
+//     return 'Category not found';
+//   }
+// }
 
-console.log(getRandomJoke());
-console.log(addJoke());
 
+process.argv.slice(2).length > 1
+  ? console.log(addJoke())
+  : console.log(getRandomJoke());
 
