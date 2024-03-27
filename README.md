@@ -5,6 +5,6 @@
 - Object anlegen mit Categorien für die jokes 
 - Alle jokes sollen nur einmal durchlaufen und es soll einen end Prompt geben (break continue)
 - möglichst dynamisch alle jokes oder einzelne Kategorien durchlaufen können
-- argv Input um die Joke
+- argv Input um alle Jokes oder einzelne Kategorien aufzurufen
 - zwei jokes battle 
 - jokes bewerten können 
