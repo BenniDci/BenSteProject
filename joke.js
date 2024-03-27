@@ -8,7 +8,7 @@ const jokes = [
     "What do you call a fish with no eyes? A fsh!",
     "Why did the bicycle fall over? Because it was two-tired!",
     "What do you call a deer with no eyes? No idea!",
-];
+]; 
 
 function generateRandomJoke() {
     const randomJoke = jokes[Math.floor(Math.random() * jokes.length)]
