@@ -4,7 +4,7 @@
 
 ---
 
-**Prerequisite:**
+**Prerequisites:**
 
 - A working PC
 - [Node.js](https://nodejs.org/en/download)
@@ -15,9 +15,18 @@
 **Windows:**
 
 1. Install [Node.js](https://nodejs.org/en/download)
-2. [Download](<(https://github.com/BenniDci/BenSteProject/archive/refs/heads/main.zip)>) Zip
+2. Download Zip
 3. Extract Zip
 4. Open Powershell or Cmd inside folder
+5. Type in `npm install`
+6. Type in `node joke.js`
+
+**Linux:**
+
+1. Install [Node.js](https://nodejs.org/en/download)
+2. Download Zip
+3. Extract Zip
+4. Open Terminal inside folder
 5. Type in `npm install`
 6. Type in `node joke.js`
 
