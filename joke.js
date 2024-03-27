@@ -72,8 +72,10 @@ function showArray(category) {
 Jokes in ${category} :
 =================
 `);
+  let counter = 1;
   for (const element of jokes[category]) {
-    console.log(element);
+    console.log(`${counter}. ${element}`);
+    counter++;
   }
 }
 
