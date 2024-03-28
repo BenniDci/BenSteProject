@@ -29,37 +29,50 @@ const jokes = {
   ],
 };
 
+// Get Joke Function 
+
 function getJoke() {
   let category = rl.question("\nChoose a category: ").toLowerCase();
-
+  
   while (!Object.hasOwn(jokes, category)) {
     category = rl
-      .question("\nNo matching category found, please try again: ")
-      .toLowerCase();
+    .question("\nNo matching category found, please try again: ")
+    .toLowerCase();
   }
   for (const element in jokes) {
     if (element === category) {
       const randNum = Math.floor(Math.random() * jokes[category].length);
-      return `\n > ${jokes[category][randNum]} <`;
+      console.log(`\n > ${jokes[category][randNum]} <`);
+
+    // Score the random joke 
+    
+    let score = rl.question("\nRate the joke from 1 to 5: ");
+    while (isNaN(score) || score < 1 || score > 5) {
+    score = rl.question("\nPlease enter a valid rating from 1 to 5: ");
+    console.log(`\nYou rated the joke "${jokes[category][randNum]}" with a score of ${score}/5.`);
+    return "\nThank you for your rating !";
     }
+    }
+    
   }
 }
 
-// Version 1
+
+// Add Joke Function
 
 function addJoke() {
   let category = rl
-    .question("\nChoose a category to add the joke in: ")
-    .toLowerCase();
-
+  .question("\nChoose a category to add the joke in: ")
+  .toLowerCase();
+  
   while (!Object.hasOwn(jokes, category)) {
     category = rl
-      .question("\nNo matching category found, please try again: ")
-      .toLowerCase();
+    .question("\nNo matching category found, please try again: ")
+    .toLowerCase();
   }
-
+  
   let joke = rl.question("\nTell me your joke: ");
-
+  
   for (const cat in jokes) {
     if (cat === category) {
       jokes[category].push(joke);
@@ -68,50 +81,59 @@ function addJoke() {
   }
 }
 
+
 // Developer function
 function showArray(category) {
-  console.log(`
-Jokes in ${category} :
-=================
-`);
-  let counter = 1;
-  for (const element of jokes[category]) {
-    console.log(`${counter}. ${element}`);
-    counter++;
+
+  while (!Object.hasOwn(jokes, category)) {
+    category = rl
+    .question("\nNo matching category found, please try again: ")
+    .toLowerCase();
+
+    console.log(`
+    Jokes in ${category} :
+    =================
+    `);
+
+    let counter = 1;
+    for (const element of jokes[category]) {
+      console.log(`${counter}. ${element}`);
+      counter++;
+    }
   }
 }
 
+// readline sync inplementierung
 const rl = require("readline-sync");
 
 let end = false;
 while (!end) {
-  // Ask for task
+  // Ask for task and key definition 
   let key = rl.question("\nGet or Add a joke ? [g/a]: ").toLowerCase();
-
+  
   while (key !== "g" && key !== "a" && key !== ".") {
     key = rl.question("\nPlease choose add [a] or get [g]: ").toLowerCase();
   }
-
+  
   if (key === ".") console.log("\n>>> Developer mode ! <<<");
   // Show available categories
   console.log("\nAvailable categories: ");
-
+  
   for (const cat in jokes) {
     console.log(`- ${cat}`);
   }
 
-  // Go into right decision
-
-  // Adding a joke
+  // Adding a joke 
   if (key === "a") {
     console.log(addJoke());
   }
-
-  // Get a joke
+  
+  // Get a joke and score it
   if (key === "g") {
     console.log(getJoke());
+    
   }
-
+  
   // Developer menu
   if (key === ".") {
     const category = rl.question("\nCategory: ");
