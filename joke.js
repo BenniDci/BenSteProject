@@ -43,17 +43,7 @@ function getJoke() {
     if (element === category) {
       const randNum = Math.floor(Math.random() * jokes[category].length);
       console.log(`\n > ${jokes[category][randNum]} <`);
-
-    // Score the random joke 
-    
-    let score = rl.question("\nRate the joke from 1 to 5: ");
-    while (isNaN(score) || score < 1 || score > 5) {
-    score = rl.question("\nPlease enter a valid rating from 1 to 5: ");
-    console.log(`\nYou rated the joke "${jokes[category][randNum]}" with a score of ${score}/5.`);
-    return "\nThank you for your rating !";
     }
-    }
-    
   }
 }
 
