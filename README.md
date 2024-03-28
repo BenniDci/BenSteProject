@@ -31,3 +31,5 @@
 6. Type in `node joke.js`
 
 ### ENJOY 😂
+
+![Flow chart](./joke.svg)

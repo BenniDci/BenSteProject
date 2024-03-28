@@ -45,8 +45,6 @@ function getJoke() {
   }
 }
 
-// Version 1
-
 function addJoke() {
   let category = rl
     .question("\nChoose a category to add the joke in: ")
